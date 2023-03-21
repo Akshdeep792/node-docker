@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon --inspect=0.0.0.0 -L index.js",
+    "delete-container": "docker rm node-app -f",
+    "build-image": "docker build -t node-app-image .",
+    "start-container": "docker run -v ${pwd}:/app -p 3000:3000 -d --name node-app node-app-image"
   },
   "repository": {
     "type": "git",
@@ -19,5 +24,8 @@
   "homepage": "https://github.com/Akshdeep792/node-docker#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
